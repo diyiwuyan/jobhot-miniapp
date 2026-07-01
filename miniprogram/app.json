@@ -1,0 +1,45 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/detail/detail",
+    "pages/subscribe/subscribe",
+    "pages/more/more",
+    "pages/holland/holland",
+    "pages/coaching/coaching"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#1a1a2e",
+    "navigationBarTitleText": "JOBHOT",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#0d1117",
+    "backgroundTextStyle": "light"
+  },
+  "tabBar": {
+    "color": "#8b949e",
+    "selectedColor": "#58a6ff",
+    "backgroundColor": "#0d1117",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "岗位",
+        "iconPath": "images/tab-job.png",
+        "selectedIconPath": "images/tab-job-active.png"
+      },
+      {
+        "pagePath": "pages/subscribe/subscribe",
+        "text": "订阅",
+        "iconPath": "images/tab-bell.png",
+        "selectedIconPath": "images/tab-bell-active.png"
+      },
+      {
+        "pagePath": "pages/more/more",
+        "text": "更多",
+        "iconPath": "images/tab-more.png",
+        "selectedIconPath": "images/tab-more-active.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json",
+  "style": "v2"
+}

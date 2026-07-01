@@ -1,0 +1,92 @@
+<!-- 订阅提醒页 -->
+<view class="container">
+  <view class="page-title">岗位订阅</view>
+  <view class="page-desc text-muted">设置你的求职偏好，有新岗位时推送提醒</view>
+
+  <!-- 订阅条件设置 -->
+  <view class="card" style="margin-top: 32rpx;">
+    <view class="form-title">关键词</view>
+    <input
+      class="form-input"
+      placeholder="如：产品经理、Java、运营"
+      placeholder-style="color: #484f58"
+      value="{{keywords}}"
+      bindinput="onKeywordsInput"
+    />
+  </view>
+
+  <view class="card">
+    <view class="form-title">意向城市</view>
+    <view class="chip-group">
+      <view
+        wx:for="{{cityOptions}}"
+        wx:key="*this"
+        class="chip {{selectedCities[item] ? 'active' : ''}}"
+        bindtap="toggleCity"
+        data-city="{{item}}"
+      >{{item}}</view>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="form-title">岗位类型</view>
+    <view class="chip-group">
+      <view
+        class="chip {{selectedChannels['campus'] ? 'active' : ''}}"
+        bindtap="toggleChannel"
+        data-channel="campus"
+      >校招</view>
+      <view
+        class="chip {{selectedChannels['intern'] ? 'active' : ''}}"
+        bindtap="toggleChannel"
+        data-channel="intern"
+      >实习</view>
+      <view
+        class="chip {{selectedChannels['talk'] ? 'active' : ''}}"
+        bindtap="toggleChannel"
+        data-channel="talk"
+      >宣讲会</view>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="form-title">企业类型</view>
+    <view class="chip-group">
+      <view
+        wx:for="{{companyTypeOptions}}"
+        wx:key="value"
+        class="chip {{selectedCompanyTypes[item.value] ? 'active' : ''}}"
+        bindtap="toggleCompanyType"
+        data-type="{{item.value}}"
+      >{{item.label}}</view>
+    </view>
+  </view>
+
+  <!-- 操作按钮 -->
+  <view class="subscribe-section">
+    <view wx:if="{{subscribed}}" class="subscribe-status success">
+      <text>✓ 已保存订阅设置</text>
+      <text class="text-muted" style="font-size: 22rpx; margin-top: 8rpx; display: block;">
+        备案完成后将开启消息推送功能
+      </text>
+    </view>
+
+    <button
+      class="btn-primary subscribe-btn"
+      bindtap="handleSubscribe"
+    >
+      {{subscribed ? '更新订阅设置' : '保存订阅设置'}}
+    </button>
+
+    <button
+      wx:if="{{subscribed}}"
+      class="btn-secondary"
+      style="margin-top: 20rpx; width: 100%;"
+      bindtap="handleUnsubscribe"
+    >取消订阅</button>
+
+    <view class="text-muted" style="font-size: 22rpx; text-align: center; margin-top: 20rpx;">
+      域名备案完成后，将支持微信消息推送提醒
+    </view>
+  </view>
+</view>

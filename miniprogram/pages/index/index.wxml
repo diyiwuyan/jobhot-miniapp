@@ -1,0 +1,126 @@
+<!-- 岗位列表页 -->
+<view class="container">
+  <!-- 搜索栏 -->
+  <view class="search-bar">
+    <icon type="search" size="14" color="#8b949e" />
+    <input
+      class="search-input"
+      placeholder="搜索岗位、公司..."
+      placeholder-style="color: #484f58"
+      value="{{keyword}}"
+      bindinput="onSearchInput"
+      bindconfirm="onSearch"
+    />
+    <view wx:if="{{keyword}}" class="search-clear" bindtap="clearSearch">✕</view>
+  </view>
+
+  <!-- 筛选栏 - 频道 -->
+  <scroll-view class="filter-bar" scroll-x enable-flex>
+    <view
+      class="filter-item {{activeChannel === 'all' ? 'active' : ''}}"
+      bindtap="setChannel"
+      data-channel="all"
+    >全部</view>
+    <view
+      class="filter-item {{activeChannel === 'campus' ? 'active' : ''}}"
+      bindtap="setChannel"
+      data-channel="campus"
+    >校招</view>
+    <view
+      class="filter-item {{activeChannel === 'intern' ? 'active' : ''}}"
+      bindtap="setChannel"
+      data-channel="intern"
+    >实习</view>
+    <view
+      class="filter-item {{activeChannel === 'talk' ? 'active' : ''}}"
+      bindtap="setChannel"
+      data-channel="talk"
+    >宣讲会</view>
+  </scroll-view>
+
+  <!-- 筛选栏 - 行业 -->
+  <scroll-view class="filter-bar" scroll-x enable-flex style="margin-top: 12rpx;">
+    <view
+      class="filter-item small {{activeCategory === 'all' ? 'active' : ''}}"
+      bindtap="setCategory"
+      data-category="all"
+    >不限</view>
+    <view
+      class="filter-item small {{activeCategory === 'internet' ? 'active' : ''}}"
+      bindtap="setCategory"
+      data-category="internet"
+    >互联网</view>
+    <view
+      class="filter-item small {{activeCategory === 'finance' ? 'active' : ''}}"
+      bindtap="setCategory"
+      data-category="finance"
+    >金融</view>
+    <view
+      class="filter-item small {{activeCategory === 'foreign' ? 'active' : ''}}"
+      bindtap="setCategory"
+      data-category="foreign"
+    >外企</view>
+    <view
+      class="filter-item small {{activeCategory === 'auto_ic' ? 'active' : ''}}"
+      bindtap="setCategory"
+      data-category="auto_ic"
+    >车企/IC</view>
+    <view
+      class="filter-item small {{activeCategory === 'game' ? 'active' : ''}}"
+      bindtap="setCategory"
+      data-category="game"
+    >游戏</view>
+    <view
+      class="filter-item small {{activeCategory === 'other' ? 'active' : ''}}"
+      bindtap="setCategory"
+      data-category="other"
+    >其他</view>
+  </scroll-view>
+
+  <!-- 岗位列表（按日期分组） -->
+  <view class="job-list">
+    <block wx:for="{{days}}" wx:key="date" wx:for-index="dayIndex">
+      <!-- 日期标题 -->
+      <view class="date-header">{{item.date}}</view>
+      <!-- 该日期下的岗位 -->
+      <block wx:for="{{item.items}}" wx:key="id" wx:for-item="job" wx:for-index="jobIndex">
+        <view class="card job-card" bindtap="goDetail" data-dayindex="{{dayIndex}}" data-index="{{jobIndex}}">
+          <!-- 标题 -->
+          <view class="job-title">{{job.title}}</view>
+          <!-- 摘要 -->
+          <view class="job-summary">{{job.summary}}</view>
+          <!-- 标签 -->
+          <view class="job-tags">
+            <view wx:if="{{job.location}}" class="tag">{{job.location}}</view>
+            <view wx:if="{{job.companyType}}" class="tag tag-green">{{job.companyTypeLabel}}</view>
+            <view wx:if="{{job.channel}}" class="tag tag-orange">{{job.channelLabel}}</view>
+            <view wx:if="{{job.deadline}}" class="tag">截止 {{job.deadline}}</view>
+          </view>
+          <!-- 底部信息 -->
+          <view class="job-meta">
+            <text class="text-muted">{{job.source}}</text>
+            <text class="text-muted">{{job.tags[0]}}</text>
+          </view>
+        </view>
+      </block>
+    </block>
+
+    <!-- 加载更多 -->
+    <view wx:if="{{loading}}" class="loading-more">
+      <view class="loading-dot"></view>
+      <text class="text-muted">加载中...</text>
+    </view>
+
+    <!-- 没有更多 -->
+    <view wx:if="{{noMore && days.length > 0 && !loading}}" class="loading-more">
+      <text class="text-muted">— 没有更多了 —</text>
+    </view>
+
+    <!-- 空状态 -->
+    <view wx:if="{{!loading && days.length === 0}}" class="empty-state">
+      <view class="icon">📭</view>
+      <view>暂无匹配的岗位信息</view>
+      <view style="margin-top: 12rpx; font-size: 24rpx;">试试调整筛选条件</view>
+    </view>
+  </view>
+</view>

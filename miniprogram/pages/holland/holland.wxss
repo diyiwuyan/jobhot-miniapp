@@ -1,0 +1,417 @@
+/* 霍兰德职业测评样式 */
+.container {
+  min-height: 100vh;
+  background: #0d1117;
+  padding: 32rpx;
+  box-sizing: border-box;
+}
+
+/* 介绍页 */
+.intro-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 60rpx;
+}
+
+.intro-icon {
+  font-size: 80rpx;
+  margin-bottom: 24rpx;
+}
+
+.intro-title {
+  font-size: 40rpx;
+  font-weight: bold;
+  color: #e6edf3;
+  margin-bottom: 8rpx;
+}
+
+.intro-subtitle {
+  font-size: 24rpx;
+  color: #8b949e;
+  margin-bottom: 32rpx;
+}
+
+.intro-desc {
+  font-size: 28rpx;
+  color: #c9d1d9;
+  line-height: 1.8;
+  text-align: justify;
+  padding: 0 16rpx;
+  margin-bottom: 40rpx;
+}
+
+.intro-info {
+  display: flex;
+  gap: 32rpx;
+  margin-bottom: 60rpx;
+}
+
+.info-item {
+  font-size: 24rpx;
+  color: #8b949e;
+}
+
+.btn-start {
+  width: 80%;
+  height: 88rpx;
+  line-height: 88rpx;
+  background: #238636;
+  color: #fff;
+  font-size: 32rpx;
+  font-weight: bold;
+  border-radius: 12rpx;
+  border: none;
+  margin-bottom: 24rpx;
+}
+
+.btn-resume {
+  width: 80%;
+  height: 80rpx;
+  line-height: 80rpx;
+  background: transparent;
+  color: #58a6ff;
+  font-size: 28rpx;
+  border: 2rpx solid #58a6ff;
+  border-radius: 12rpx;
+  margin-bottom: 16rpx;
+}
+
+.btn-history {
+  width: 80%;
+  height: 80rpx;
+  line-height: 80rpx;
+  background: transparent;
+  color: #8b949e;
+  font-size: 28rpx;
+  border: 2rpx solid #30363d;
+  border-radius: 12rpx;
+}
+
+/* 答题页 */
+.test-section {
+  padding-top: 16rpx;
+}
+
+.progress-bar {
+  height: 8rpx;
+  background: #21262d;
+  border-radius: 4rpx;
+  overflow: hidden;
+  margin-bottom: 12rpx;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #238636, #58a6ff);
+  border-radius: 4rpx;
+  transition: width 0.3s ease;
+}
+
+.progress-text {
+  font-size: 24rpx;
+  color: #8b949e;
+  text-align: center;
+  margin-bottom: 40rpx;
+}
+
+.question-card {
+  background: #161b22;
+  border: 1rpx solid #30363d;
+  border-radius: 16rpx;
+  padding: 40rpx 32rpx;
+  margin-bottom: 32rpx;
+}
+
+.question-text {
+  font-size: 34rpx;
+  color: #e6edf3;
+  line-height: 1.6;
+  margin-bottom: 40rpx;
+  text-align: center;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+}
+
+.option-item {
+  display: flex;
+  align-items: center;
+  gap: 20rpx;
+  padding: 24rpx 28rpx;
+  background: #0d1117;
+  border: 2rpx solid #30363d;
+  border-radius: 12rpx;
+  transition: all 0.2s ease;
+}
+
+.option-item.selected {
+  border-color: #58a6ff;
+  background: rgba(88, 166, 255, 0.1);
+}
+
+.option-score {
+  width: 48rpx;
+  height: 48rpx;
+  line-height: 48rpx;
+  text-align: center;
+  background: #21262d;
+  color: #8b949e;
+  border-radius: 50%;
+  font-size: 24rpx;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+.option-item.selected .option-score {
+  background: #58a6ff;
+  color: #fff;
+}
+
+.option-label {
+  font-size: 28rpx;
+  color: #c9d1d9;
+}
+
+/* 导航按钮 */
+.nav-buttons {
+  display: flex;
+  gap: 24rpx;
+  margin-top: 16rpx;
+}
+
+.btn-nav {
+  flex: 1;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 28rpx;
+  border-radius: 12rpx;
+  border: none;
+}
+
+.btn-prev {
+  background: #21262d;
+  color: #c9d1d9;
+}
+
+.btn-prev[disabled] {
+  opacity: 0.4;
+}
+
+.btn-next {
+  background: #238636;
+  color: #fff;
+}
+
+.btn-submit {
+  background: #58a6ff;
+  color: #fff;
+}
+
+.btn-submit.disabled {
+  opacity: 0.5;
+}
+
+/* 结果页 */
+.result-section {
+  padding-top: 16rpx;
+}
+
+.result-header {
+  text-align: center;
+  margin-bottom: 40rpx;
+}
+
+.result-title {
+  font-size: 28rpx;
+  color: #8b949e;
+  margin-bottom: 16rpx;
+}
+
+.holland-code {
+  font-size: 72rpx;
+  font-weight: bold;
+  color: #58a6ff;
+  letter-spacing: 16rpx;
+  margin-bottom: 12rpx;
+}
+
+.result-date {
+  font-size: 22rpx;
+  color: #484f58;
+}
+
+/* 类型卡片 */
+.top-types {
+  display: flex;
+  flex-direction: column;
+  gap: 24rpx;
+  margin-bottom: 40rpx;
+}
+
+.type-card {
+  background: #161b22;
+  border: 1rpx solid #30363d;
+  border-radius: 16rpx;
+  padding: 32rpx;
+}
+
+.type-rank {
+  font-size: 24rpx;
+  color: #58a6ff;
+  font-weight: bold;
+  margin-bottom: 8rpx;
+}
+
+.type-name {
+  font-size: 32rpx;
+  color: #e6edf3;
+  font-weight: bold;
+  margin-bottom: 4rpx;
+}
+
+.type-short {
+  font-size: 24rpx;
+  color: #8b949e;
+  margin-bottom: 16rpx;
+}
+
+.type-bar {
+  position: relative;
+  height: 32rpx;
+  background: #21262d;
+  border-radius: 16rpx;
+  overflow: hidden;
+  margin-bottom: 16rpx;
+}
+
+.type-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #238636, #58a6ff);
+  border-radius: 16rpx;
+  transition: width 0.5s ease;
+}
+
+.type-bar-text {
+  position: absolute;
+  right: 16rpx;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20rpx;
+  color: #e6edf3;
+  font-weight: bold;
+}
+
+.type-desc {
+  font-size: 26rpx;
+  color: #c9d1d9;
+  line-height: 1.6;
+  margin-bottom: 16rpx;
+}
+
+.type-careers {
+  background: #0d1117;
+  border-radius: 8rpx;
+  padding: 16rpx 20rpx;
+}
+
+.careers-label {
+  font-size: 22rpx;
+  color: #8b949e;
+  margin-bottom: 4rpx;
+}
+
+.careers-text {
+  font-size: 24rpx;
+  color: #58a6ff;
+  line-height: 1.6;
+}
+
+/* 全部维度得分 */
+.all-scores {
+  background: #161b22;
+  border: 1rpx solid #30363d;
+  border-radius: 16rpx;
+  padding: 32rpx;
+  margin-bottom: 40rpx;
+}
+
+.scores-title {
+  font-size: 28rpx;
+  color: #e6edf3;
+  font-weight: bold;
+  margin-bottom: 24rpx;
+}
+
+.score-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16rpx;
+}
+
+.score-label {
+  width: 160rpx;
+  font-size: 22rpx;
+  color: #8b949e;
+  flex-shrink: 0;
+}
+
+.score-bar-wrap {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+}
+
+.score-bar-bg {
+  flex: 1;
+  height: 16rpx;
+  background: #21262d;
+  border-radius: 8rpx;
+  overflow: hidden;
+}
+
+.score-bar-fill {
+  height: 100%;
+  background: #58a6ff;
+  border-radius: 8rpx;
+}
+
+.score-value {
+  width: 48rpx;
+  font-size: 22rpx;
+  color: #c9d1d9;
+  text-align: right;
+}
+
+/* 操作按钮 */
+.result-actions {
+  display: flex;
+  gap: 24rpx;
+  padding-bottom: 60rpx;
+}
+
+.btn-share {
+  flex: 1;
+  height: 80rpx;
+  line-height: 80rpx;
+  background: #238636;
+  color: #fff;
+  font-size: 28rpx;
+  border-radius: 12rpx;
+  border: none;
+}
+
+.btn-retake {
+  flex: 1;
+  height: 80rpx;
+  line-height: 80rpx;
+  background: #21262d;
+  color: #c9d1d9;
+  font-size: 28rpx;
+  border-radius: 12rpx;
+  border: none;
+}

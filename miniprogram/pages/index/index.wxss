@@ -1,0 +1,123 @@
+/* 搜索栏 */
+.search-bar {
+  display: flex;
+  align-items: center;
+  background: #161b22;
+  border: 1rpx solid #21262d;
+  border-radius: 12rpx;
+  padding: 16rpx 24rpx;
+  margin-bottom: 20rpx;
+  gap: 16rpx;
+}
+
+.search-input {
+  flex: 1;
+  font-size: 28rpx;
+  color: #e6edf3;
+}
+
+.search-clear {
+  color: #8b949e;
+  font-size: 28rpx;
+  padding: 8rpx;
+}
+
+/* 筛选栏 */
+.filter-bar {
+  white-space: nowrap;
+  margin-bottom: 8rpx;
+}
+
+.filter-item {
+  display: inline-block;
+  padding: 12rpx 28rpx;
+  font-size: 26rpx;
+  color: #8b949e;
+  background: #161b22;
+  border: 1rpx solid #21262d;
+  border-radius: 32rpx;
+  margin-right: 16rpx;
+}
+
+.filter-item.small {
+  padding: 8rpx 22rpx;
+  font-size: 24rpx;
+}
+
+.filter-item.active {
+  color: #58a6ff;
+  background: rgba(88, 166, 255, 0.1);
+  border-color: rgba(88, 166, 255, 0.3);
+}
+
+/* 日期分组标题 */
+.date-header {
+  font-size: 26rpx;
+  color: #8b949e;
+  font-weight: 600;
+  padding: 24rpx 0 12rpx;
+  border-bottom: 1rpx solid #21262d;
+  margin-bottom: 16rpx;
+  margin-top: 8rpx;
+}
+
+/* 岗位卡片 */
+.job-card {
+  padding: 28rpx;
+}
+
+.job-title {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #e6edf3;
+  line-height: 1.5;
+  margin-bottom: 12rpx;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.job-summary {
+  font-size: 24rpx;
+  color: #8b949e;
+  line-height: 1.6;
+  margin-bottom: 16rpx;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.job-tags {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 16rpx;
+}
+
+.job-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 22rpx;
+}
+
+/* 加载更多 */
+.loading-more {
+  text-align: center;
+  padding: 40rpx;
+  font-size: 24rpx;
+}
+
+.loading-dot {
+  width: 12rpx;
+  height: 12rpx;
+  background: #58a6ff;
+  border-radius: 50%;
+  margin: 0 auto 16rpx;
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}

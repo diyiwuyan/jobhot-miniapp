@@ -1,0 +1,58 @@
+<!-- 岗位详情页 -->
+<view class="container">
+  <view wx:if="{{job}}" class="detail-content">
+    <!-- 标题 -->
+    <view class="detail-title">{{job.title}}</view>
+
+    <!-- 标签 -->
+    <view class="detail-tags">
+      <view wx:if="{{job.location}}" class="tag">📍 {{job.location}}</view>
+      <view wx:if="{{job.companyType}}" class="tag tag-green">{{job.companyTypeLabel}}</view>
+      <view wx:if="{{job.channel}}" class="tag tag-orange">{{job.channelLabel}}</view>
+      <view wx:if="{{job.deadline}}" class="tag">⏰ 截止 {{job.deadline}}</view>
+    </view>
+
+    <view class="divider"></view>
+
+    <!-- 摘要信息 -->
+    <view class="detail-section">
+      <view class="section-title">岗位信息</view>
+      <view class="detail-summary">{{job.summary}}</view>
+    </view>
+
+    <view class="divider"></view>
+
+    <!-- 来源信息 -->
+    <view class="detail-section">
+      <view class="section-title">来源</view>
+      <view class="detail-source">
+        <text>{{job.source}}</text>
+        <text class="text-muted" style="margin-left: 16rpx;">{{job.dateLabel}}</text>
+      </view>
+    </view>
+
+    <view class="divider"></view>
+
+    <!-- 操作按钮 -->
+    <view class="detail-actions">
+      <button class="btn-primary" bindtap="copyLink">复制原文链接</button>
+      <button class="btn-share" open-type="share">分享给同学</button>
+    </view>
+
+    <!-- 网页版提示 -->
+    <view class="web-tip">
+      <view class="text-muted" style="font-size: 24rpx; text-align: center; margin-top: 40rpx;">
+        💡 在网页版查看更多详情
+      </view>
+      <view class="text-accent" style="font-size: 24rpx; text-align: center; margin-top: 8rpx;">
+        jobhot.abcdabcd.cc
+      </view>
+    </view>
+  </view>
+
+  <!-- 加载中 -->
+  <view wx:if="{{!job}}" class="empty-state">
+    <view class="icon">⏳</view>
+    <view>加载中...</view>
+  </view>
+</view>

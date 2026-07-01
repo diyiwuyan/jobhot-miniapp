@@ -1,0 +1,156 @@
+<!-- 霍兰德职业兴趣测试 -->
+<view class="container">
+
+  <!-- 介绍页 -->
+  <block wx:if="{{stage === 'intro'}}">
+    <view class="intro-section">
+      <view class="intro-icon">🎯</view>
+      <view class="intro-title">霍兰德职业兴趣测试</view>
+      <view class="intro-subtitle">Holland RIASEC Model</view>
+      <view class="intro-desc">
+        霍兰德职业兴趣理论将人的职业兴趣分为六种类型：现实型(R)、研究型(I)、艺术型(A)、社会型(S)、企业型(E)、常规型(C)。通过本测试，你可以了解自己的职业兴趣倾向，找到更适合的职业方向。
+      </view>
+      <view class="intro-info">
+        <view class="info-item">📋 共 {{totalQuestions}} 道题</view>
+        <view class="info-item">⏱️ 约需 5-8 分钟</view>
+        <view class="info-item">📊 6 个维度分析</view>
+      </view>
+      <button class="btn-start" bindtap="startTest">开始测试</button>
+
+      <block wx:if="{{Object.keys(answers).length > 0}}">
+        <button class="btn-resume" bindtap="resumeTest">继续上次 (已答 {{Object.keys(answers).length}}/{{totalQuestions}})</button>
+      </block>
+
+      <block wx:if="{{false}}">
+        <button class="btn-history" bindtap="viewLastResult">查看上次结果</button>
+      </block>
+    </view>
+  </block>
+
+  <!-- 答题页 -->
+  <block wx:if="{{stage === 'testing'}}">
+    <view class="test-section">
+      <!-- 进度条 -->
+      <view class="progress-bar">
+        <view class="progress-fill" style="width: {{progress}}%"></view>
+      </view>
+      <view class="progress-text">{{currentIndex + 1}} / {{totalQuestions}}</view>
+
+      <!-- 题目 -->
+      <view class="question-card">
+        <view class="question-text">{{questions[currentIndex].text}}</view>
+        <view class="options">
+          <view
+            class="option-item {{answers[questions[currentIndex].id] === 1 ? 'selected' : ''}}"
+            bindtap="selectAnswer"
+            data-question-id="{{questions[currentIndex].id}}"
+            data-score="{{1}}"
+          >
+            <view class="option-score">1</view>
+            <view class="option-label">完全不符合</view>
+          </view>
+          <view
+            class="option-item {{answers[questions[currentIndex].id] === 2 ? 'selected' : ''}}"
+            bindtap="selectAnswer"
+            data-question-id="{{questions[currentIndex].id}}"
+            data-score="{{2}}"
+          >
+            <view class="option-score">2</view>
+            <view class="option-label">比较不符合</view>
+          </view>
+          <view
+            class="option-item {{answers[questions[currentIndex].id] === 3 ? 'selected' : ''}}"
+            bindtap="selectAnswer"
+            data-question-id="{{questions[currentIndex].id}}"
+            data-score="{{3}}"
+          >
+            <view class="option-score">3</view>
+            <view class="option-label">不确定</view>
+          </view>
+          <view
+            class="option-item {{answers[questions[currentIndex].id] === 4 ? 'selected' : ''}}"
+            bindtap="selectAnswer"
+            data-question-id="{{questions[currentIndex].id}}"
+            data-score="{{4}}"
+          >
+            <view class="option-score">4</view>
+            <view class="option-label">比较符合</view>
+          </view>
+          <view
+            class="option-item {{answers[questions[currentIndex].id] === 5 ? 'selected' : ''}}"
+            bindtap="selectAnswer"
+            data-question-id="{{questions[currentIndex].id}}"
+            data-score="{{5}}"
+          >
+            <view class="option-score">5</view>
+            <view class="option-label">完全符合</view>
+          </view>
+        </view>
+      </view>
+
+      <!-- 导航按钮 -->
+      <view class="nav-buttons">
+        <button class="btn-nav btn-prev" bindtap="prevQuestion" disabled="{{currentIndex === 0}}">上一题</button>
+        <button
+          wx:if="{{currentIndex < totalQuestions - 1}}"
+          class="btn-nav btn-next"
+          bindtap="nextQuestion"
+        >下一题</button>
+        <button
+          wx:else
+          class="btn-nav btn-submit {{Object.keys(answers).length < totalQuestions ? 'disabled' : ''}}"
+          bindtap="submitTest"
+        >提交</button>
+      </view>
+    </view>
+  </block>
+
+  <!-- 结果页 -->
+  <block wx:if="{{stage === 'result' && result}}">
+    <view class="result-section">
+      <view class="result-header">
+        <view class="result-title">你的职业兴趣代码</view>
+        <view class="holland-code">{{result.hollandCode}}</view>
+        <view class="result-date">测试日期：{{result.testDate}}</view>
+      </view>
+
+      <!-- 前三类型详情 -->
+      <view class="top-types">
+        <view class="type-card" wx:for="{{result.topThree}}" wx:key="type">
+          <view class="type-rank">#{{index + 1}}</view>
+          <view class="type-name">{{item.name}}</view>
+          <view class="type-short">{{item.short}}</view>
+          <view class="type-bar">
+            <view class="type-bar-fill" style="width: {{item.percentage}}%"></view>
+            <view class="type-bar-text">{{item.score}}/{{item.maxScore}}</view>
+          </view>
+          <view class="type-desc">{{item.desc}}</view>
+          <view class="type-careers">
+            <view class="careers-label">推荐职业方向：</view>
+            <view class="careers-text">{{item.careers}}</view>
+          </view>
+        </view>
+      </view>
+
+      <!-- 全部维度得分 -->
+      <view class="all-scores">
+        <view class="scores-title">全部维度得分</view>
+        <view class="score-row" wx:for="{{result.allScores}}" wx:key="type">
+          <view class="score-label">{{item.type}} {{item.short}}</view>
+          <view class="score-bar-wrap">
+            <view class="score-bar-bg">
+              <view class="score-bar-fill" style="width: {{item.percentage}}%"></view>
+            </view>
+            <view class="score-value">{{item.score}}</view>
+          </view>
+        </view>
+      </view>
+
+      <!-- 操作按钮 -->
+      <view class="result-actions">
+        <button class="btn-share" open-type="share">分享结果</button>
+        <button class="btn-retake" bindtap="retakeTest">重新测试</button>
+      </view>
+    </view>
+  </block>
+</view>

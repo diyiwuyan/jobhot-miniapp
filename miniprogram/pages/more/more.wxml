@@ -1,0 +1,77 @@
+<!-- 更多功能页 -->
+<view class="container">
+  <view class="page-title">更多功能</view>
+
+  <!-- 小程序内功能 -->
+  <view class="section-label">小程序内体验</view>
+  <view class="feature-list">
+    <view class="card feature-card" bindtap="goToPage" data-url="/pages/holland/holland">
+      <view class="feature-icon">🎯</view>
+      <view class="feature-info">
+        <view class="feature-name">职业测评</view>
+        <view class="feature-desc text-muted">霍兰德职业兴趣测试，找到适合你的方向</view>
+      </view>
+      <view class="feature-arrow text-muted">→</view>
+    </view>
+
+    <view class="card feature-card" bindtap="goToPage" data-url="/pages/coaching/coaching">
+      <view class="feature-icon">💼</view>
+      <view class="feature-info">
+        <view class="feature-name">求职辅导</view>
+        <view class="feature-desc text-muted">简历撰写、面试技巧、时间规划全攻略</view>
+      </view>
+      <view class="feature-arrow text-muted">→</view>
+    </view>
+  </view>
+
+  <!-- 网页版功能 -->
+  <view class="section-label" style="margin-top: 32rpx;">前往网页版</view>
+  <view class="feature-list">
+    <view class="card feature-card" bindtap="copyWebUrl">
+      <view class="feature-icon">📝</view>
+      <view class="feature-info">
+        <view class="feature-name">笔试训练</view>
+        <view class="feature-desc text-muted">行测五大模块模拟练习，即时出分</view>
+      </view>
+      <view class="feature-arrow text-muted">→</view>
+    </view>
+
+    <view class="card feature-card" bindtap="copyWebUrl">
+      <view class="feature-icon">📄</view>
+      <view class="feature-info">
+        <view class="feature-name">简历诊断</view>
+        <view class="feature-desc text-muted">AI 分析简历，给出优化建议</view>
+      </view>
+      <view class="feature-arrow text-muted">→</view>
+    </view>
+
+    <view class="card feature-card" bindtap="copyWebUrl">
+      <view class="feature-icon">⭐</view>
+      <view class="feature-info">
+        <view class="feature-name">我的收藏</view>
+        <view class="feature-desc text-muted">查看收藏的岗位，云端同步</view>
+      </view>
+      <view class="feature-arrow text-muted">→</view>
+    </view>
+  </view>
+
+  <!-- 网页版入口 -->
+  <view class="web-entry">
+    <view class="divider"></view>
+    <view class="web-entry-card" bindtap="copyWebUrl">
+      <view class="web-entry-title">🌐 访问网页完整版</view>
+      <view class="web-entry-url text-accent">jobhot.abcdabcd.cc</view>
+      <view class="text-muted" style="font-size: 22rpx; margin-top: 12rpx;">
+        点击复制网址，在浏览器中打开体验全部功能
+      </view>
+    </view>
+  </view>
+
+  <!-- 关于 -->
+  <view class="about-section">
+    <view class="divider"></view>
+    <view class="text-muted" style="font-size: 22rpx; text-align: center; padding: 32rpx 0;">
+      JOBHOT · 更好用的大学生求职站
+    </view>
+  </view>
+</view>

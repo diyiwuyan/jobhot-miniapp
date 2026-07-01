@@ -1,0 +1,51 @@
+<!-- 求职辅导页面 -->
+<view class="container">
+  <view class="page-header">
+    <view class="page-icon">💼</view>
+    <view class="page-title">求职辅导</view>
+    <view class="page-desc">助你高效拿到心仪 Offer</view>
+  </view>
+
+  <!-- 辅导内容区块 -->
+  <view class="sections">
+    <view class="section-card" wx:for="{{sections}}" wx:key="title">
+      <view class="section-header">
+        <view class="section-icon">{{item.icon}}</view>
+        <view class="section-title">{{item.title}}</view>
+      </view>
+      <view class="section-content">
+        <view class="content-item" wx:for="{{item.content}}" wx:for-item="line" wx:key="*this">
+          {{line}}
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 二维码区域 -->
+  <view class="qrcode-section" wx:if="{{qrcodes.length > 0}}">
+    <view class="divider"></view>
+    <view class="qrcode-title">加入我们</view>
+    <view class="qrcode-list">
+      <view class="qrcode-card" wx:for="{{qrcodes}}" wx:key="title">
+        <image
+          class="qrcode-image"
+          src="{{item.image}}"
+          mode="aspectFit"
+          bindtap="previewQrcode"
+          data-src="{{item.image}}"
+        />
+        <view class="qrcode-info">
+          <view class="qrcode-name">{{item.title}}</view>
+          <view class="qrcode-desc">{{item.desc}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="qrcode-tip">长按二维码图片可保存到相册</view>
+  </view>
+
+  <!-- 底部 -->
+  <view class="footer">
+    <view class="divider"></view>
+    <view class="footer-text">JOBHOT · 更好用的大学生求职站</view>
+  </view>
+</view>
