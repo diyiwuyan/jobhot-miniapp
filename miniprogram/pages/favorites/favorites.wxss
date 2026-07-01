@@ -1,0 +1,115 @@
+/* 收藏页 */
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24rpx;
+}
+
+.clear-btn {
+  font-size: 24rpx;
+  color: #8b949e;
+  padding: 8rpx 16rpx;
+  border: 1rpx solid #30363d;
+  border-radius: 8rpx;
+}
+
+/* 空状态 */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 200rpx;
+}
+
+.empty-icon {
+  font-size: 96rpx;
+  margin-bottom: 24rpx;
+  opacity: 0.4;
+}
+
+.empty-text {
+  font-size: 30rpx;
+  color: #e6edf3;
+  margin-bottom: 12rpx;
+}
+
+.empty-hint {
+  font-size: 24rpx;
+}
+
+/* 收藏列表 */
+.fav-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16rpx;
+}
+
+.fav-item {
+  display: flex;
+  align-items: center;
+  background: #161b22;
+  border: 1rpx solid #30363d;
+  border-radius: 12rpx;
+  padding: 24rpx;
+}
+
+.fav-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.fav-title {
+  font-size: 28rpx;
+  color: #e6edf3;
+  font-weight: 500;
+  margin-bottom: 12rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.fav-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8rpx;
+  align-items: center;
+}
+
+.tag-small {
+  font-size: 20rpx !important;
+  padding: 2rpx 8rpx !important;
+}
+
+.meta-text {
+  font-size: 22rpx;
+  color: #8b949e;
+}
+
+/* 删除按钮 */
+.fav-remove {
+  width: 56rpx;
+  height: 56rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #8b949e;
+  font-size: 28rpx;
+  flex-shrink: 0;
+  margin-left: 12rpx;
+  border-radius: 50%;
+}
+
+.fav-remove:active {
+  background: rgba(248, 81, 73, 0.1);
+  color: #f85149;
+}
+
+/* 底部 */
+.fav-footer {
+  text-align: center;
+  font-size: 22rpx;
+  padding: 32rpx 0 16rpx;
+}

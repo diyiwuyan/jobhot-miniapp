@@ -22,6 +22,15 @@
       </view>
       <view class="feature-arrow text-muted">→</view>
     </view>
+
+    <view class="card feature-card" bindtap="goToPage" data-url="/pages/subscribe/subscribe">
+      <view class="feature-icon">🔔</view>
+      <view class="feature-info">
+        <view class="feature-name">订阅设置</view>
+        <view class="feature-desc text-muted">设置求职偏好，未来支持消息推送</view>
+      </view>
+      <view class="feature-arrow text-muted">→</view>
+    </view>
   </view>
 
   <!-- 网页版功能 -->
@@ -45,14 +54,6 @@
       <view class="feature-arrow text-muted">→</view>
     </view>
 
-    <view class="card feature-card" bindtap="copyWebUrl">
-      <view class="feature-icon">⭐</view>
-      <view class="feature-info">
-        <view class="feature-name">我的收藏</view>
-        <view class="feature-desc text-muted">查看收藏的岗位，云端同步</view>
-      </view>
-      <view class="feature-arrow text-muted">→</view>
-    </view>
   </view>
 
   <!-- 网页版入口 -->

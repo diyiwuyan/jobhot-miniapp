@@ -2,10 +2,11 @@
   "pages": [
     "pages/index/index",
     "pages/detail/detail",
-    "pages/subscribe/subscribe",
+    "pages/favorites/favorites",
     "pages/more/more",
     "pages/holland/holland",
-    "pages/coaching/coaching"
+    "pages/coaching/coaching",
+    "pages/subscribe/subscribe"
   ],
   "window": {
     "navigationBarBackgroundColor": "#1a1a2e",
@@ -27,10 +28,10 @@
         "selectedIconPath": "images/tab-job-active.png"
       },
       {
-        "pagePath": "pages/subscribe/subscribe",
-        "text": "订阅",
-        "iconPath": "images/tab-bell.png",
-        "selectedIconPath": "images/tab-bell-active.png"
+        "pagePath": "pages/favorites/favorites",
+        "text": "收藏",
+        "iconPath": "images/tab-fav.png",
+        "selectedIconPath": "images/tab-fav-active.png"
       },
       {
         "pagePath": "pages/more/more",

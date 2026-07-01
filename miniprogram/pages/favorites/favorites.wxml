@@ -1,0 +1,35 @@
+<!-- 收藏列表页 -->
+<view class="container">
+  <view class="page-header">
+    <view class="page-title">我的收藏</view>
+    <view wx:if="{{!isEmpty}}" class="clear-btn" bindtap="clearAll">清空</view>
+  </view>
+
+  <!-- 空状态 -->
+  <view wx:if="{{isEmpty}}" class="empty-state">
+    <view class="empty-icon">☆</view>
+    <view class="empty-text">暂无收藏的岗位</view>
+    <view class="empty-hint text-muted">浏览岗位时点击收藏，下次方便查看</view>
+  </view>
+
+  <!-- 收藏列表 -->
+  <view wx:if="{{!isEmpty}}" class="fav-list">
+    <view class="fav-item" wx:for="{{favorites}}" wx:key="id">
+      <view class="fav-content" bindtap="goDetail" data-item="{{item}}">
+        <view class="fav-title">{{item.title}}</view>
+        <view class="fav-meta">
+          <text wx:if="{{item.companyTypeLabel}}" class="tag tag-small">{{item.companyTypeLabel}}</text>
+          <text wx:if="{{item.channelLabel}}" class="tag tag-small tag-orange">{{item.channelLabel}}</text>
+          <text wx:if="{{item.location}}" class="meta-text">📍{{item.location}}</text>
+          <text wx:if="{{item.source}}" class="meta-text">{{item.source}}</text>
+        </view>
+      </view>
+      <view class="fav-remove" bindtap="removeFavorite" data-id="{{item.id}}">✕</view>
+    </view>
+  </view>
+
+  <!-- 底部计数 -->
+  <view wx:if="{{!isEmpty}}" class="fav-footer text-muted">
+    共 {{favorites.length}} 个收藏
+  </view>
+</view>
