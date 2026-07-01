@@ -1,20 +1,9 @@
-/* 顶部标语 */
-.hero-banner {
+/* 副标语 */
+.sub-slogan {
   text-align: center;
-  padding: 24rpx 0 20rpx;
-}
-
-.hero-title {
-  font-size: 32rpx;
-  font-weight: 700;
-  color: #e6edf3;
-  letter-spacing: 0.04em;
-}
-
-.hero-subtitle {
   font-size: 22rpx;
   color: #8b949e;
-  margin-top: 6rpx;
+  padding: 12rpx 0 4rpx;
 }
 
 /* 搜索栏 */

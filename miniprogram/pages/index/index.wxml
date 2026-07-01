@@ -1,5 +1,8 @@
 <!-- 岗位列表页 -->
 <view class="container">
+  <!-- 副标语 -->
+  <view class="sub-slogan">大学生求职信息实时更新</view>
+
   <!-- 搜索栏 -->
   <view class="search-bar">
     <icon type="search" size="14" color="#8b949e" />
