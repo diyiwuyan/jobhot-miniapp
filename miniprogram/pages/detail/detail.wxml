@@ -1,6 +1,13 @@
 <!-- 岗位详情页 -->
 <view class="container">
   <view wx:if="{{job}}" class="detail-content">
+    <!-- 顶部操作栏 -->
+    <view class="detail-topbar">
+      <view class="favorite-btn {{isFavorited ? 'favorited' : ''}}" bindtap="toggleFavorite">
+        <text>{{isFavorited ? '★ 已收藏' : '☆ 收藏'}}</text>
+      </view>
+    </view>
+
     <!-- 标题 -->
     <view class="detail-title">{{job.title}}</view>
 
@@ -9,40 +16,61 @@
       <view wx:if="{{job.location}}" class="tag">📍 {{job.location}}</view>
       <view wx:if="{{job.companyType}}" class="tag tag-green">{{job.companyTypeLabel}}</view>
       <view wx:if="{{job.channel}}" class="tag tag-orange">{{job.channelLabel}}</view>
-      <view wx:if="{{job.deadline}}" class="tag">⏰ 截止 {{job.deadline}}</view>
+      <view wx:if="{{job.score}}" class="tag tag-blue">匹配度 {{job.score}}</view>
+    </view>
+
+    <!-- 额外标签 -->
+    <view wx:if="{{job.tags && job.tags.length > 0}}" class="detail-extra-tags">
+      <view class="extra-tag" wx:for="{{job.tags}}" wx:key="*this">{{item}}</view>
     </view>
 
     <view class="divider"></view>
 
-    <!-- 摘要信息 -->
-    <view class="detail-section">
-      <view class="section-title">岗位信息</view>
-      <view class="detail-summary">{{job.summary}}</view>
-    </view>
-
-    <view class="divider"></view>
-
-    <!-- 来源信息 -->
-    <view class="detail-section">
-      <view class="section-title">来源</view>
-      <view class="detail-source">
-        <text>{{job.source}}</text>
-        <text class="text-muted" style="margin-left: 16rpx;">{{job.dateLabel}}</text>
+    <!-- 关键信息卡片 -->
+    <view class="info-cards">
+      <view class="info-card" wx:if="{{job.source}}">
+        <view class="info-label">来源平台</view>
+        <view class="info-value">{{job.source}}</view>
       </view>
+      <view class="info-card" wx:if="{{job.deadline}}">
+        <view class="info-label">截止日期</view>
+        <view class="info-value warn">{{job.deadlineLabel || job.deadline}}</view>
+      </view>
+      <view class="info-card" wx:if="{{job.dateLabel}}">
+        <view class="info-label">发布时间</view>
+        <view class="info-value">{{job.dateLabel}}</view>
+      </view>
+      <view class="info-card" wx:if="{{job.category}}">
+        <view class="info-label">岗位类型</view>
+        <view class="info-value">{{job.category}}</view>
+      </view>
+    </view>
+
+    <view class="divider"></view>
+
+    <!-- 岗位详情/摘要 -->
+    <view class="detail-section">
+      <view class="section-title">岗位详情</view>
+      <view class="detail-summary">{{job.summary || '暂无详细描述，请复制链接到浏览器查看原文'}}</view>
     </view>
 
     <view class="divider"></view>
 
     <!-- 操作按钮 -->
     <view class="detail-actions">
-      <button class="btn-primary" bindtap="copyLink">复制原文链接</button>
-      <button class="btn-share" open-type="share">分享给同学</button>
+      <button class="btn-primary" bindtap="copyLink">📋 复制原文链接</button>
+      <view class="action-row">
+        <button class="btn-secondary" bindtap="toggleFavorite">
+          {{isFavorited ? '★ 取消收藏' : '☆ 加入收藏'}}
+        </button>
+        <button class="btn-share" open-type="share">📤 分享</button>
+      </view>
     </view>
 
     <!-- 网页版提示 -->
     <view class="web-tip">
       <view class="text-muted" style="font-size: 24rpx; text-align: center; margin-top: 40rpx;">
-        💡 在网页版查看更多详情
+        💡 在网页版可查看完整岗位详情和投递入口
       </view>
       <view class="text-accent" style="font-size: 24rpx; text-align: center; margin-top: 8rpx;">
         jobhot.abcdabcd.cc
@@ -50,9 +78,10 @@
     </view>
   </view>
 
-  <!-- 加载中 -->
+  <!-- 无数据状态 -->
   <view wx:if="{{!job}}" class="empty-state">
-    <view class="icon">⏳</view>
-    <view>加载中...</view>
+    <view class="icon">📋</view>
+    <view>岗位信息加载失败</view>
+    <view class="text-muted" style="font-size: 24rpx; margin-top: 12rpx;">请从首页列表点击进入查看</view>
   </view>
 </view>

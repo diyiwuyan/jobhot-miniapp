@@ -8,6 +8,7 @@ Page({
   data: {
     job: null,
     url: '',
+    isFavorited: false,
   },
 
   onLoad(options) {
@@ -24,14 +25,55 @@ Page({
           channelLabel: CHANNEL_MAP[job.channel] || job.channel,
           companyTypeLabel: COMPANY_TYPE_MAP[job.companyType] || job.companyType,
           dateLabel: this.formatDate(job.createdAt),
+          deadlineLabel: job.deadline ? this.formatDate(job.deadline) : '',
         },
       });
       // 清除临时数据
       app.globalData._tempJob = null;
+
+      // 检查是否已收藏
+      this.checkFavorite(job.id);
     } else {
-      // 如果没有临时数据（比如从分享进入），显示简要信息
       wx.showToast({ title: '请从列表进入查看', icon: 'none' });
     }
+  },
+
+  // 检查收藏状态
+  checkFavorite(jobId) {
+    const favorites = wx.getStorageSync('favorites') || [];
+    this.setData({ isFavorited: favorites.includes(jobId) });
+  },
+
+  // 切换收藏
+  toggleFavorite() {
+    const { job, isFavorited } = this.data;
+    if (!job) return;
+
+    let favorites = wx.getStorageSync('favorites') || [];
+
+    if (isFavorited) {
+      favorites = favorites.filter(id => id !== job.id);
+      wx.showToast({ title: '已取消收藏', icon: 'success' });
+    } else {
+      favorites.unshift(job.id);
+      // 同时保存岗位信息用于收藏列表展示
+      let favJobs = wx.getStorageSync('favoriteJobs') || {};
+      favJobs[job.id] = {
+        id: job.id,
+        title: job.title,
+        source: job.source,
+        channel: job.channel,
+        companyType: job.companyType,
+        location: job.location,
+        url: this.data.url,
+        createdAt: job.createdAt,
+      };
+      wx.setStorageSync('favoriteJobs', favJobs);
+      wx.showToast({ title: '已收藏', icon: 'success' });
+    }
+
+    wx.setStorageSync('favorites', favorites);
+    this.setData({ isFavorited: !isFavorited });
   },
 
   // 复制链接
@@ -44,15 +86,6 @@ Page({
     } else {
       wx.showToast({ title: '暂无原文链接', icon: 'none' });
     }
-  },
-
-  // 在浏览器打开
-  openInBrowser() {
-    const webUrl = `${getApp().globalData.baseUrl}`;
-    wx.setClipboardData({
-      data: webUrl,
-      success: () => wx.showToast({ title: '网址已复制，请在浏览器打开', icon: 'none' }),
-    });
   },
 
   onShareAppMessage() {
