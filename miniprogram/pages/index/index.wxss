@@ -3,7 +3,7 @@
   text-align: center;
   font-size: 22rpx;
   color: #8b949e;
-  padding: 12rpx 0 4rpx;
+  padding: 20rpx 0 16rpx;
 }
 
 /* 搜索栏 */
