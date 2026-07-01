@@ -1,5 +1,11 @@
 <!-- 岗位列表页 -->
 <view class="container">
+  <!-- 顶部标语 -->
+  <view class="hero-banner">
+    <view class="hero-title">JOBHOT · 找个好去处</view>
+    <view class="hero-subtitle">大学生求职信息实时更新</view>
+  </view>
+
   <!-- 搜索栏 -->
   <view class="search-bar">
     <icon type="search" size="14" color="#8b949e" />
